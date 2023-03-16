@@ -1,0 +1,39 @@
+DROP TABLE IF EXISTS budgets;
+DROP TABLE IF EXISTS goals;
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE transactions (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  amount DECIMAL(10, 2) NOT NULL,
+  description VARCHAR(255),
+  category VARCHAR(50) NOT NULL,
+  date DATE NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE goals (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  name VARCHAR(50) NOT NULL,
+  target_amount DECIMAL(10, 2) NOT NULL,
+  current_amount DECIMAL(10, 2) NOT NULL DEFAULT 0,
+  target_date DATE,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE budgets (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  category VARCHAR(50) NOT NULL,
+  amount DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
