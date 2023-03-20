@@ -1,2 +1,18 @@
 ### testing if express server works 
 Get http://localhost:3000
+
+### get all users
+Get http://localhost:3000/user
+
+### get user with id  
+Get http://localhost:3000/user/2
+
+### create user
+Post http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "name": "test",
+    "email": "test@gmail.com"
+}
+
