@@ -16,3 +16,54 @@ Content-Type: application/json
     "email": "test@gmail.com"
 }
 
+### delete user with id
+Delete http://localhost:3000/user/3
+
+### update user with id
+PATCH http://localhost:3000/user/4
+Content-Type: application/json
+
+{
+    "name": "test",
+    "email": "testingpost@gmail"
+}
+
+
+
+### get all transactions
+Get http://localhost:3000/transactions
+
+### get tranaction by id  
+GET  http://localhost:3000/transactions/3
+
+### create transaction
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "amount": 100,
+    "description": "breaksfast",
+    "category": "food",
+    "date": "2020-10-10"
+
+}
+
+
+### delete transaction with id
+DELETE http://localhost:3000/transactions/4
+
+### update transaction with id
+PATCH http://localhost:3000/transactions/3
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "amount": 100,
+    "description": "breaksfast",
+    "category": "food",
+    "date": "2020-10-10"
+
+}
+
+
