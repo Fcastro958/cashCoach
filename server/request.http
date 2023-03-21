@@ -66,4 +66,67 @@ Content-Type: application/json
 
 }
 
+### get all goals
+GET http://localhost:3000/goals
+
+### get goal by id
+GET http://localhost:3000/goals/1
+
+### create goal
+POST http://localhost:3000/goals
+Content-Type: application/json
+
+{
+   "user_id": 1,
+   "name": "Family trip to Hawaii",
+   "target_amount": 6000,
+    "current_amount": 0,
+    "target_date": "2020-10-10"
+}
+
+### delete goal with id
+DELETE http://localhost:3000/goals/3
+
+### update goal with id
+PATCH http://localhost:3000/goals/4
+Content-Type: application/json
+
+{
+   "user_id": 1,
+   "name": "Family trip to tokyo",
+   "target_amount": 7000,
+    "current_amount": 0,
+    "target_date": "2023-06-23"
+}
+
+### get all budgets
+GET http://localhost:3000/budgets
+
+### get budget by id
+GET http://localhost:3000/budgets/1
+
+
+### create budget
+POST http://localhost:3000/budgets
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "category": "going out",
+    "amount": 250
+}
+
+### delete budget with id
+DELETE http://localhost:3000/budgets/3
+
+### update budget with id
+PATCH http://localhost:3000/budgets/4
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "category": "test",
+    "amount": 200
+}
+
 

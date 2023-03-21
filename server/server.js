@@ -183,6 +183,160 @@ app.patch('/transactions/:id', async (req, res) => {
     }
     updateTransaction();
 });
+// Get all goals
+app.get('/goals', async (req, res) => {
+    async function getGoals() {
+        try {
+            const result = await pool.query('SELECT * FROM goals');
+            res.status(200).send(result.rows);
+        } catch (e) {
+            console.log(e.stack);
+        }
+    }
+    getGoals();
+});
+
+// Get a goal by ID
+app.get('/goals/:id', async (req, res) => {
+    async function getGoalById() {
+        try {
+            const result = await pool.query(`SELECT * FROM goals WHERE id = ${req.params.id}`);
+            if (result.rows.length === 0) {
+                res.sendStatus(404);
+            } else {
+                res.status(200).send(result.rows[0]);
+            }
+        } catch (e) {
+            console.log(e.stack);
+        }
+    }
+    getGoalById();
+});
+
+// Create a goal
+app.post('/goals', async (req, res) => {
+    async function createGoal() {
+        try{
+            let goal = req.body;
+            let user_id = goal.user_id;
+            let name = goal.name;
+            let target_amount = goal.target_amount;
+            let current_amount = goal.current_amount;
+            let target_date = goal.target_date;
+            const result = await pool.query(`INSERT INTO goals (user_id, name, target_amount, current_amount, target_date) VALUES (${user_id}, '${name}', ${target_amount}, ${current_amount}, '${target_date}') RETURNING *`);
+            res.status(201).send(result.rows[0]);
+        } catch (e) {
+            console.error(e.stack);
+        }
+    }
+    createGoal();
+
+});
+
+// Delete a goal by ID
+app.delete('/goals/:id', async (req, res) => {
+    async function deleteGoal() {
+        try {
+            const result = await pool.query(`DELETE FROM goals WHERE id = ${req.params.id} RETURNING *`);
+            if (result.rows.length === 0) {
+                res.sendStatus(404);
+            } else {
+                res.status(200).send(result.rows[0]);
+            }
+        } catch (e) {
+            console.error(e.stack);
+        }
+    }
+    deleteGoal();
+});
+
+// Update a goal by ID
+app.patch('/goals/:id', async (req, res) => {
+    async function updateGoal() {
+        try {
+            let goal = req.body;
+            let user_id = goal.user_id;
+            let name = goal.name;
+            let target_amount = goal.target_amount;
+            let current_amount = goal.current_amount;
+            let target_date = goal.target_date;
+            const result = await pool.query(`UPDATE goals SET user_id = ${user_id}, name = '${name}', target_amount = ${target_amount}, current_amount = ${current_amount}, target_date = '${target_date}' WHERE id = ${req.params.id} RETURNING *`);
+            if (result.rows.length === 0) {
+                res.sendStatus(404);
+            } else {
+                res.status(200).send(result.rows[0]);
+            }
+        } catch (e) {
+            console.error(e.stack);
+        }
+    }
+    updateGoal();
+});
+
+app.get('/budgets', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM budgets');
+        res.status(200).send(result.rows);
+    } catch (e) {
+        console.error(e.stack);
+    }
+});
+
+app.get('/budgets/:id', async (req, res) => {
+    try {
+        const result = await pool.query(`SELECT * FROM budgets WHERE id = ${req.params.id}`);
+        if (result.rows.length === 0) {
+            res.sendStatus(404);
+        } else {
+            res.status(200).send(result.rows[0]);
+        }
+    } catch (e) {
+        console.error(e.stack);
+    }
+});
+
+app.post('/budgets', async (req, res) => {
+    try {
+        let budget = req.body;
+        let user_id = budget.user_id;
+        let category = budget.category;
+        let amount = budget.amount;
+        const result = await pool.query(`INSERT INTO budgets (user_id, category, amount) VALUES (${user_id}, '${category}', ${amount}) RETURNING *`);
+        res.status(201).send(result.rows[0]);
+    } catch (e) {
+        console.error(e.stack);
+    }
+});
+
+app.delete('/budgets/:id', async (req, res) => {
+    try {
+        const result = await pool.query(`DELETE FROM budgets WHERE id = ${req.params.id} RETURNING *`);
+        if (result.rows.length === 0) {
+            res.sendStatus(404);
+        } else {
+            res.status(200).send(result.rows[0]);
+        }
+    } catch (e) {
+        console.error(e.stack);
+    }
+});
+
+app.patch('/budgets/:id', async (req, res) => {
+    try {
+        let budget = req.body;
+        let user_id = budget.user_id;
+        let category = budget.category;
+        let amount = budget.amount;
+        const result = await pool.query(`UPDATE budgets SET user_id = ${user_id}, category = '${category}', amount = ${amount} WHERE id = ${req.params.id} RETURNING *`);
+        if (result.rows.length === 0) {
+            res.sendStatus(404);
+        } else {
+            res.status(200).send(result.rows[0]);
+        }
+    } catch (e) {
+        console.error(e.stack);
+    }
+});
 
 
 app.listen(port, () => {
