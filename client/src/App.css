@@ -1,0 +1,73 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.App-nav {
+  display: flex;
+}
+
+.App-nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.App-nav li {
+  cursor: pointer;
+  margin-left: 6rem;
+  text-shadow: 1px 1px 0 #000, /* top left shadow */
+  -1px 1px 0 #000, /* top right shadow */
+  1px -1px 0 #000, /* bottom left shadow */
+  -1px -1px 0 #000; /* bottom right shadow */
+}
+
+.App-nav li:hover {
+  color: #ccc;
+}
+
+.App-user {
+  cursor: pointer;
+}
+
+.App-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.App-main {
+  display: flex;
+  flex-grow: 1;
+}
+
+.App-main-left {
+  flex-grow: 1;
+  background-color: #f0f0f0;
+}
+
+.App-main-right {
+  flex-grow: 1;
+  background-color: #d0d0d0;
+  /* Replace the line below with your actual image URL */
+  background-image: url('/image.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
