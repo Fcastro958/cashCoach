@@ -1,3 +1,6 @@
+
+
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -14,9 +17,30 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: #fff;
+  background-color:black;
+  color: white;
   padding: 1rem;
+
+}
+
+.style{
+  color: #f5f5f5;
+  /* text-transform: uppercase; */
+  font-family: verdana;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
 }
 
 .App-nav {
@@ -49,7 +73,11 @@ body {
 
 .App-container {
   display: flex;
-  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: grey;
 }
 
 .App-main {
@@ -58,16 +86,138 @@ body {
 }
 
 .App-main-left {
-  flex-grow: 1;
-  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #333;
+  
 }
 
-.App-main-right {
-  flex-grow: 1;
-  background-color: #d0d0d0;
-  /* Replace the line below with your actual image URL */
-  background-image: url('/image.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+
+@media (max-width: 768px) {
+  .App-header {
+    flex-direction: column;
+  }
+
+  .App-nav ul {
+    flex-direction: column;
+  }
+
+  .App-nav li {
+    margin-left: 0
+
+  }
 }
+.App-description {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 800px;
+}
+
+.App-description h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
+}
+
+.App-description p {
+  margin-bottom: 1.5rem;
+  color: #f5f5f5;
+}
+
+.App-features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  padding-top: 4rem;
+}
+
+.feature {
+  width: 250px;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.start-button{
+  margin-bottom: 2rem;
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: white;
+  color: #333;
+}
+.feature{
+  color: white;
+
+}
+
+.spinning-cube-canvas {
+  width: 200px;
+  height: 200px;
+}
+/* components/Footer.css */
+.App-footer {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li {
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.footer-nav li:hover {
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .footer-content
+} 
